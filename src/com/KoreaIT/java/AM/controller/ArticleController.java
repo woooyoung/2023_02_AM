@@ -87,6 +87,11 @@ public class ArticleController extends Controller {
 
 		String[] cmdBits = command.split(" ");
 
+		if (cmdBits.length == 2) {
+			System.out.println("명령어를 확인해주세요");
+			return;
+		}
+
 		int id = Integer.parseInt(cmdBits[2]);
 
 		Article foundArticle = getArticleById(id);
@@ -108,6 +113,11 @@ public class ArticleController extends Controller {
 
 	private void doModify() {
 		String[] cmdBits = command.split(" ");
+
+		if (cmdBits.length == 2) {
+			System.out.println("명령어를 확인해주세요");
+			return;
+		}
 
 		int id = Integer.parseInt(cmdBits[2]);
 
@@ -132,6 +142,11 @@ public class ArticleController extends Controller {
 
 	private void doDelete() {
 		String[] cmdBits = command.split(" ");
+
+		if (cmdBits.length == 2) {
+			System.out.println("명령어를 확인해주세요");
+			return;
+		}
 
 		int id = Integer.parseInt(cmdBits[2]);
 

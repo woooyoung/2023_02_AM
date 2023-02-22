@@ -35,10 +35,19 @@ public class MemberController extends Controller {
 		case "login":
 			doLogin();
 			break;
+		case "logout":
+			doLogout();
+			break;
 		default:
 			System.out.println("존재하지 않는 명령어입니다");
 			break;
 		}
+	}
+
+	private void doLogout() {
+		loginedMember = null;
+		
+		System.out.println("로그아웃 되었습니다");
 	}
 
 	public void makeTestData() {
