@@ -22,7 +22,7 @@ public class MemberController extends Controller {
 		this.sc = sc;
 	}
 
-	int lastMemberId = 0;
+	int lastMemberId = 3;
 
 	public void doAction(String command, String actionMethodName) {
 		this.command = command;
@@ -44,12 +44,6 @@ public class MemberController extends Controller {
 		}
 	}
 
-	private void doLogout() {
-		loginedMember = null;
-		
-		System.out.println("로그아웃 되었습니다");
-	}
-
 	public void makeTestData() {
 		System.out.println("테스트를 위한 회원 데이터를 생성합니다");
 		members.add(new Member(1, Util.getNowDateTimeStr(), "test1", "test1", "김철수"));
@@ -57,8 +51,23 @@ public class MemberController extends Controller {
 		members.add(new Member(3, Util.getNowDateTimeStr(), "test3", "test3", "박영수"));
 	}
 
+	private void doLogout() {
+		if (isLogined() == false) {
+			System.out.println("로그아웃 상태입니다");
+			return;
+		}
+
+		loginedMember = null;
+
+		System.out.println("로그아웃 되었습니다");
+	}
+
+	private boolean isLogined() {
+		return loginedMember != null;
+	}
+
 	private void doLogin() {
-		if (loginedMember != null) {
+		if (isLogined()) {
 			System.out.println("로그아웃 후 이용해주세요");
 			return;
 		}
@@ -116,6 +125,10 @@ public class MemberController extends Controller {
 	}
 
 	private void doJoin() {
+		if (isLogined()) {
+			System.out.println("로그아웃 후 이용해주세요");
+			return;
+		}
 		int id = lastMemberId + 1;
 		String regDate = Util.getNowDateTimeStr();
 		String loginId = null;
