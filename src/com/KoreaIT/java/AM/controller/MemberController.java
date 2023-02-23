@@ -15,8 +15,6 @@ public class MemberController extends Controller {
 	private String command;
 	private String actionMethodName;
 
-	private Member loginedMember = null;
-
 	public MemberController(Scanner sc) {
 		this.members = new ArrayList<>();
 		this.sc = sc;
@@ -60,10 +58,6 @@ public class MemberController extends Controller {
 		loginedMember = null;
 
 		System.out.println("로그아웃 되었습니다");
-	}
-
-	private boolean isLogined() {
-		return loginedMember != null;
 	}
 
 	private void doLogin() {
